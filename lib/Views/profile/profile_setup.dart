@@ -4,12 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:tyamo_app/Views/Widgets/Auth/auth_text_field.dart';
 
-class ProfileSetup extends StatelessWidget {
+class ProfileSetup extends StatefulWidget {
   ProfileSetup({super.key});
 
+  @override
+  State<ProfileSetup> createState() => _ProfileSetupState();
+}
+
+class _ProfileSetupState extends State<ProfileSetup> {
   final RoundedLoadingButtonController _btnController =
       RoundedLoadingButtonController();
+
   void loginbtn() {}
+
+  bool ismale = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +29,15 @@ class ProfileSetup extends StatelessWidget {
           width: double.infinity,
           child: Image.asset('assets/images/sms.png'),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/back2.png'),
+            filterQuality: FilterQuality.high,
+          ),
+        ),
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,43 +93,56 @@ class ProfileSetup extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: const BoxDecoration(
-                      color: Colors.cyan,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black38,
-                            offset: Offset(1.0, 10.0),
-                            blurRadius: 30)
-                      ]),
-                  child: const Icon(
-                    Icons.male,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {});
+                    ismale = true;
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: ismale ? Colors.cyan : Colors.grey,
+                        shape: BoxShape.circle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black38,
+                              offset: Offset(1.0, 10.0),
+                              blurRadius: 30)
+                        ]),
+                    child: const Icon(
+                      Icons.male,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: const BoxDecoration(
-                      color: Colors.pink,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black38,
-                            offset: Offset(1.0, 10.0),
-                            blurRadius: 30)
-                      ]),
-                  child: const Icon(
-                    Icons.female,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      ismale = false;
+                    });
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: !ismale ? Colors.pink : Colors.grey,
+                        shape: BoxShape.circle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black38,
+                              offset: Offset(1.0, 10.0),
+                              blurRadius: 30)
+                        ]),
+                    child: const Icon(
+                      Icons.female,
+                      color: Colors.white,
+                    ),
                   ),
                 )
               ],
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: RoundedLoadingButton(
