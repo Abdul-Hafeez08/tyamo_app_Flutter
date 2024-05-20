@@ -21,9 +21,9 @@ class ForgotPassword extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 0, 5, 79),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Container(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(25),
           child: Column(
             children: [
               AuthHeading(
@@ -33,13 +33,13 @@ class ForgotPassword extends StatelessWidget {
                   fontSize: 18,
                   logoSize: 25),
               const SizedBox(height: 30),
-              Container(
+              SizedBox(
                 height: 150,
                 width: 150,
                 child: Image.asset('assets/images/forgotpassword.png'),
               ),
               const SizedBox(height: 20),
-              TextFieldAuth(
+              const TextFieldAuth(
                   text: "Email",
                   logo: Icons.alternate_email,
                   keybordtype: TextInputType.emailAddress,

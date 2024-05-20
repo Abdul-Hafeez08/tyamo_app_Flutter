@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class TextFieldAuth extends StatelessWidget {
-  TextFieldAuth({
+  const TextFieldAuth({
     super.key,
     required this.text,
     required this.logo,
@@ -38,7 +39,7 @@ class TextFieldAuth extends StatelessWidget {
         prefixIconColor: const Color.fromARGB(255, 21, 161, 248),
         label: Text(
           text,
-          style: GoogleFonts.poppins(fontSize: 15, color: Colors.black),
+          style: GoogleFonts.poppins(fontSize: 15.sp, color: Colors.black),
         ),
       ),
     );
